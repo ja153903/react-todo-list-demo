@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
 import Todo from "../Todo";
 import {
   addTodo,
   deleteTodo,
   modifyTodo,
-  useTodosStore
+  useTodosStore,
+  totalNumberOfPosts
 } from "../../contexts/Todos";
 
 import "./Todos.css";
@@ -17,6 +18,8 @@ function Todos() {
   } = useTodosStore();
 
   const [todo, updateTodo] = useState("");
+
+  const numOfPosts = useMemo(() => totalNumberOfPosts(todos), [todos]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -61,7 +64,7 @@ function Todos() {
   return (
     <div className="todos">
       <div className="todos-render">
-        <h1>Here are your todos</h1>
+        <h1>Here are your todos ({numOfPosts})</h1>
         {renderTodos()}
       </div>
       {renderAddTodos()}
