@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Todo from "../Todos";
+import Todo from "../Todo";
 import {
   addTodo,
   deleteTodo,
