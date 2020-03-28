@@ -2,7 +2,7 @@ import React from "react";
 import { cleanup, render, fireEvent } from "@testing-library/react";
 import { renderHook, act } from "@testing-library/react-hooks";
 
-import TodosList from "./TodosList";
+import Todos from "./Todos";
 import {
   useTodosStore,
   TodosProvider,
@@ -17,17 +17,17 @@ describe("TodosList UI Tests", () => {
   afterEach(cleanup);
 
   test("Should see <h1>Here are your todos</h1>", () => {
-    const { getByText } = render(<TodosList />, { wrapper });
+    const { getByText } = render(<Todos />, { wrapper });
     expect(getByText("Here are your todos")).toBeInTheDocument();
   });
 
   test("Should see <h2>You have no Todos</h2> since empty", () => {
-    const { getByText } = render(<TodosList />, { wrapper });
+    const { getByText } = render(<Todos />, { wrapper });
     expect(getByText("You have no Todos")).toBeInTheDocument();
   });
 
   test("If we add a Todo, we should be able to see it in an unordered list", () => {
-    const { container, getByText } = render(<TodosList />, { wrapper });
+    const { container, getByText } = render(<Todos />, { wrapper });
     const todo = container.querySelector("input[name='add-todo']");
     const submit = container.querySelector("button");
 
@@ -45,7 +45,7 @@ describe("TodosList UI Tests", () => {
   });
 
   test("Suppose we have a Todo, we should be able to click it and remove it from the list", () => {
-    const { container, getByText } = render(<TodosList />, { wrapper });
+    const { container, getByText } = render(<Todos />, { wrapper });
     const todo = container.querySelector("input[name='add-todo']");
     const submit = container.querySelector("button[name='add-todo-btn']");
 
@@ -71,7 +71,7 @@ describe("TodosList UI Tests", () => {
   });
 
   test("Modify a Todo", () => {
-    const { container, getByText } = render(<TodosList />, { wrapper });
+    const { container, getByText } = render(<Todos />, { wrapper });
     const todo = container.querySelector("input[name='add-todo']");
     const submit = container.querySelector("button[name='add-todo-btn']");
 

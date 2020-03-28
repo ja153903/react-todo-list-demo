@@ -8,9 +8,9 @@ import {
   useTodosStore
 } from "../../contexts/Todos";
 
-import "./TodosList.css";
+import "./Todos.css";
 
-function TodosList() {
+function Todos() {
   const {
     state: { todos },
     dispatch
@@ -69,4 +69,4 @@ function TodosList() {
   );
 }
 
-export default TodosList;
+export default Todos;
